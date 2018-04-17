@@ -2,6 +2,7 @@ from sklearn import tree
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
+import numpy as np
 
 
 #comparing results of 4 classifiers from sklearn package
@@ -29,6 +30,13 @@ knn_prediction = knn_clf.predict([[190, 70, 43]])
 random_fc_prediction = random_fc.predict([[190,70,43]])
 gaussian_Nbc_prediction = gaussian_Nbc.predict([[190,70,43]])
 
+# The best classifier from DecissionTree, KNN, RandomForest, GaussianNB
+
+index = np.argmax([prediction, knn_prediction, random_fc_prediction, gaussian_Nbc_prediction])
+classifiers = {0: 'DecisionTree', 1: 'KNN', 2: 'RandomForest', 3: 'GaussianNB'}
+print('Best gender classifier is {}'.format(classifiers[index]))
+
+print('Results...')
 print("DecisionTree->", "".join(prediction))
 print("KNeighbourClassifier-> ", "".join(knn_prediction))
 print("RandomForestClassifier-> ", "".join(random_fc_prediction))
